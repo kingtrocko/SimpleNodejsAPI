@@ -1,10 +1,8 @@
 var http    = require('http'), //To create the HTTP server this modulue shoulbe be loaded
     fs      = require('fs'), //load this module to read files in the file system
-    router  = require('./routes.js'),
-    jsonObj = require('./data.json'),
-    path    = require('path');
-
-var jsonUrl = "http://www.cs.toronto.edu/~mashiyat/csc309/Assignments/favs.json";
+    router  = require('./routes.js'), //the routes of the API
+    jsonObj = require('./data.json'), //the json data
+    path    = require('path'); // module for handling file path
 
 //Get all tweets available in the archive.
 router.registerRoute('get-tweets', function(req, res, data){
@@ -104,6 +102,7 @@ router.registerRoute('get-text-info', function(req, res, data){
   res.end(JSON.stringify(tweets));
 });
 
+//to serve static files
 router.registerRoute('', function(req, res, info){
   var filePath = './public/index.html';
   var contentType = 'text/html';
@@ -113,6 +112,7 @@ router.registerRoute('', function(req, res, info){
     contentType = 'text/javascript';
   }
 
+  //read from file system the requested file. in this case just index.html and app.js are requested
   fs.readFile(filePath, function (err, data) {
     if (err) {
         console.log('Error while reading the' + filePath + 'file: ' + err);
