@@ -1,4 +1,4 @@
-# Assignment 3 - Web Service
+# Web Service
 
 ### Overview
 This API provides endpoints to retrieve information from a tweets archive and each endpoint returns data in JSON format.
